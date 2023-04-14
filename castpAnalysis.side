@@ -1,0 +1,140 @@
+{
+  "id": "15be6502-1d86-4989-abf4-c4b2dbae6463",
+  "version": "2.0",
+  "name": "castpAnalysis",
+  "url": "http://sts.bioe.uic.edu/castp/index.html",
+  "tests": [{
+    "id": "067251cd-a507-410c-a2f0-5497505edc3e",
+    "name": "Untitled",
+    "commands": [{
+      "id": "8f6ff3f2-96aa-486b-b86a-103b7f2781aa",
+      "comment": "Use your list of job ids collected from the output of the submission script.",
+      "command": "executeScript",
+      "target": "return [\"3igg\",\"201l\"]",
+      "targets": [],
+      "value": "job_ids"
+    }, {
+      "id": "3ebfcc85-e7f0-412d-b848-9db5722af118",
+      "comment": "",
+      "command": "forEach",
+      "target": "job_ids",
+      "targets": [],
+      "value": "job_id"
+    }, {
+      "id": "bfe9c237-464a-4630-8c69-19c6e79d64ce",
+      "comment": "",
+      "command": "open",
+      "target": "http://sts.bioe.uic.edu/castp/index.html?${job_id}",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "fd17f858-7c52-4a92-8624-e1231f449c7c",
+      "comment": "",
+      "command": "click",
+      "target": "id=show-pocket-btn",
+      "targets": [
+        ["id=show-pocket-btn", "id"],
+        ["css=#show-pocket-btn", "css:finder"],
+        ["xpath=//button[@id='show-pocket-btn']", "xpath:attributes"],
+        ["xpath=//div[@id='control_board']/div/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9e04e068-33bc-4da8-bdb3-17e65ddbc6f7",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ng-scope:nth-child(2) > td > label",
+      "targets": [
+        ["css=.ng-scope:nth-child(2) > td > label", "css:finder"],
+        ["xpath=//div[@id='visconfig_board']/div/table/tbody/tr[2]/td/label", "xpath:idRelative"],
+        ["xpath=//tr[2]/td/label", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e6887ff3-bf9a-4bee-823d-c217ea3cd099",
+      "comment": "",
+      "command": "click",
+      "target": "css=.modal-action:nth-child(2)",
+      "targets": [
+        ["css=.modal-action:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='visconfig_board']/div[2]/div/button[2]", "xpath:idRelative"],
+        ["xpath=//div[7]/div[2]/div/button[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "bddf57d8-49be-4c98-a281-9b0e3b847076",
+      "comment": "",
+      "command": "storeText",
+      "target": "xpath=//table[@id='poc_table']//tr[1]//td[3]",
+      "targets": [],
+      "value": "larger_volume"
+    }, {
+      "id": "b8f60e17-699f-40de-870a-c662368a7974",
+      "comment": "",
+      "command": "storeText",
+      "target": "xpath=//table[@id='poc_table']//tr[2]//td[3]",
+      "targets": [],
+      "value": "smaller_volume"
+    }, {
+      "id": "395042ea-a33b-4f0b-8114-3beabac612ec",
+      "comment": "",
+      "command": "storeText",
+      "target": "xpath=//table[@id='atom_table']//tr[1]//td[3]",
+      "targets": [],
+      "value": "larger_seqID"
+    }, {
+      "id": "6aa806bc-2566-4a4f-a8f8-218b9dd288e4",
+      "comment": "",
+      "command": "storeXpathCount",
+      "target": "xpath=//table[@id='atom_table']//tr",
+      "targets": [],
+      "value": "num_rows"
+    }, {
+      "id": "bfd554b6-eb38-4e00-a4fe-7877af3a218b",
+      "comment": "",
+      "command": "executeScript",
+      "target": "return parseInt(${num_rows}) -1",
+      "targets": [],
+      "value": "num_rows"
+    }, {
+      "id": "c16edf50-a117-4340-8cec-9a441875e274",
+      "comment": "",
+      "command": "storeText",
+      "target": "xpath=//table[@id='atom_table']//tr[${num_rows}]//td[3]",
+      "targets": [],
+      "value": "smaller_seqID"
+    }, {
+      "id": "c8b618c7-b346-4a20-acda-f7ab115d4ebc",
+      "comment": "",
+      "command": "pause",
+      "target": "5000",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5ade7f0c-99cf-4f2e-984a-10abc70d5a46",
+      "comment": "",
+      "command": "echo",
+      "target": "${larger_volume},${larger_seqID},${smaller_volume},${smaller_seqID}",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "3fa0c886-7556-422b-a42a-4211f402826f",
+      "comment": "",
+      "command": "end",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "fb21063f-df6e-40a6-bd6e-8e1b15cb3755",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["067251cd-a507-410c-a2f0-5497505edc3e"]
+  }],
+  "urls": ["http://sts.bioe.uic.edu/castp/index.html"],
+  "plugins": []
+}
